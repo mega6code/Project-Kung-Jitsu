@@ -5,8 +5,6 @@ public class PlayerControls : MonoBehaviour
 {
     #region Fields
     public int player_num;
-    public Vector3 vector_movement = new Vector3(2, 2);
-
     public InputActionAsset actions;
     public InputActionMap action_map;
     public InputAction kick_IA;
