@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 4919591797657032596}
   - component: {fileID: 4870238669082033463}
   - component: {fileID: 8726438262992668829}
-  - component: {fileID: 7200621284925677415}
   - component: {fileID: 6332519676371734937}
   - component: {fileID: 4421395631099262093}
+  - component: {fileID: 7939353403631714525}
+  - component: {fileID: 6583214736765939093}
   m_Layer: 0
-  m_Name: Greg_Test
+  m_Name: PlayerPrefab
   m_TagString: EditorOnly
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -89,53 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7200621284925677415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3834442024671458082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af3880c2d5af424aad645f33d6c35b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_num: 1
-  actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  action_map:
-    m_Name: Action_map
-    m_Id: f520dcb9-1fc4-4647-a01b-8ad8a7c7dc22
-    m_Asset: {fileID: 0}
-    m_Actions: []
-    m_Bindings: []
-  kick_IA:
-    m_Name: Kick_IA
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 767c2ef1-c213-42f2-9e43-9f5e6ad0a98d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  punch_IA:
-    m_Name: Punch_IA
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 55260b17-cf85-451f-9103-6daf7ad04d4b
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  grab_IA:
-    m_Name: Grab_IA
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 893da210-f918-4686-9694-4620b2e831b7
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!136 &6332519676371734937
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -186,3 +140,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7939353403631714525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834442024671458082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4faea771836fd64f8a7826541cee751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_number: 0
+--- !u!114 &6583214736765939093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834442024671458082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af3880c2d5af424aad645f33d6c35b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack_choice: 0
+  action_asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
