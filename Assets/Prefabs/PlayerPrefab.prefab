@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6583214736765939093}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -160,10 +160,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834442024671458082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af3880c2d5af424aad645f33d6c35b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack_choice: 0
   action_asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  player_core: {fileID: 7939353403631714525}

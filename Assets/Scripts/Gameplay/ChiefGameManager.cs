@@ -3,30 +3,26 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+//add animation core, fix playernum thing (just make it simple now), dont disable playercore only player controls
 public class ChiefGameManager : MonoBehaviour
 {
-    private bool start_game;
-    private BattleManager myBattleManager;
+    
+    public BattleManager myBattleManager;
+
+    //private bool start_game = false;
+
     private void Start()
     {
-        myBattleManager = gameObject.GetComponent<BattleManager>();
+        
     }
     private void Update()
     {
-        if (start_game)
-        {
-            
+        Debug.Log("Main Menu");
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {           
             myBattleManager.enabled = true;
-            this.enabled = false;
-            //gameObject.scene.GetType();
-            
-        }
-        else
-        {
-            if (Input.anyKeyDown)
-            {
-                start_game = true;
-            }
+            this.enabled = false;       
         }
     }
 }

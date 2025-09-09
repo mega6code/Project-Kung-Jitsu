@@ -10,23 +10,26 @@ namespace Gameplay {
     public class PlayerControls : MonoBehaviour
     {
         #region Fields
-        public AttackTypes attack_choice;
+        
         public InputActionAsset action_asset;
-        private Player player;
-        public int player_num;
+        public PlayerCore player_core;
+
+        private AttackTypes attack_choice;
+        private int player_num;
         private InputActionMap action_map;
         private InputAction kick_IA;
         private InputAction punch_IA;
         private InputAction grab_IA;
-        
         #endregion
+
+        public AttackTypes Attack_choice { get => attack_choice; set => attack_choice = value; }
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        public void OnEnable()
         {
-            //player = gameObject.GetComponent<Player>();
-            //player.player_number = player_num;
+
+            player_num = player_core.player_number;
             action_map = action_asset.FindActionMap($"P{player_num}Combat");
             kick_IA = action_map.FindAction("Kick");
             punch_IA = action_map.FindAction("Punch");

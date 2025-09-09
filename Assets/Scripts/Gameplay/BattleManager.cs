@@ -2,26 +2,33 @@ using System.Threading;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Gameplay.Fighters;
 
 namespace Gameplay
 {
     public class BattleManager : MonoBehaviour
     {
+        //stuff stuff
         public GameObject Player1;
         public GameObject Player2;
         public GameObject FightingPlatform;
 
+        //stuff stuff on da inside
         private AttackTypes p1_atkchoice;
         private AttackTypes p2_atkchoice;
         private FightingPlatformStuff FPStuff;
+
+        //num stuff
         private int atkchoice_result;
         private int turn_winner;     
-        private int attack_strength = 2;
+        private float reposition_distance;
 
+        //timers and stuff
         private float timer = 10;  //the actual live timer
         public float fightprep_time = 10; //how long until fight auto ends
-        public float fight_time = 1; //how long the fight lasts in seconds
+        public float fight_time = 2; //how long the fight lasts in seconds
 
+        //bools and balls
         private bool IsFightTime = false;
         private bool IsPostFight = false;
 
@@ -31,17 +38,20 @@ namespace Gameplay
 
         void OnEnable()
         {
-            //Player1
-            FPStuff = FightingPlatform.GetComponent<FightingPlatformStuff>();
-            FPStuff.enabled = true;
+            Player1.GetComponent<PlayerCore>().MatchStartPositioning();
+            Player2.GetComponent<PlayerCore>().MatchStartPositioning();
+            Player1.GetComponent<PlayerControls>().enabled = true;
+            Player2.GetComponent<PlayerControls>().enabled = true;
+            Debug.Log("MATCH START!");
         }
 
         private void OnDisable()
         {
-            //ChiefGameManager
+            FPStuff.enabled = false;
+            gameObject.GetComponent<ChiefGameManager>().enabled = true;
+            Debug.Log("MATCH OVER!");
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (IsPostFight)
@@ -65,11 +75,17 @@ namespace Gameplay
             }
         }
 
+        private void FighterAssigning(Player player, Fighter selected_fighter)
+        {
+            
+           player.GetComponent<PlayerCore>().Current_fighter.DisableFighter();
+           player.GetComponent<PlayerCore>().Current_fighter = selected_fighter;
+        }
         //private 
         private bool IsFightPrepDone()
         {
-            p1_atkchoice = Player1.GetComponent<PlayerControls>().attack_choice;
-            p2_atkchoice = Player2.GetComponent<PlayerControls>().attack_choice;
+            p1_atkchoice = Player1.GetComponent<PlayerControls>().Attack_choice;
+            p2_atkchoice = Player2.GetComponent<PlayerControls>().Attack_choice;
 
             Debug.Log($"P1 Currently: {p1_atkchoice}");
             Debug.Log($"P2 Currently: {p2_atkchoice}");
@@ -80,7 +96,6 @@ namespace Gameplay
 
                 if (timer <= 0 || (!(p1_atkchoice == AttackTypes.None) && !(p2_atkchoice == AttackTypes.None)))
                 {
-                    timer = fightprep_time;
                     Debug.Log("FIGHT TIMEEEEEE");
                     return true;
                 }
@@ -171,23 +186,23 @@ namespace Gameplay
                 switch (turn_winner)
                 {
                     case 1:
-                        Player1.transform.position += ((Vector3.back * attack_strength) * Time.deltaTime);
-                        Player2.transform.position += ((Vector3.back * attack_strength) * Time.deltaTime);
+                        Player2.GetComponent<PlayerCore>().MoveBackwards(2);
                         break;
                     case 2:
-                        Player1.transform.position += ((Vector3.forward * attack_strength) * Time.deltaTime);
-                        Player2.transform.position += ((Vector3.forward * attack_strength) * Time.deltaTime);
+                        Player1.GetComponent<PlayerCore>().MoveBackwards(2);
                         break;
                     case 0:
-                        if (timer > fight_time / 2)
+                        if (timer > (fight_time / 2))
                         {
-                            Player1.transform.position += ((Vector3.up * 1) * Time.deltaTime);
-                            Player2.transform.position += ((Vector3.up * 1) * Time.deltaTime);
+                            Player1.GetComponent<PlayerCore>().MoveBackwards(1);
+                            Player2.GetComponent<PlayerCore>().MoveBackwards(1);
                         }
                         else
                         {
-                            Player1.transform.position += ((Vector3.down * 1) * Time.deltaTime);
-                            Player2.transform.position += ((Vector3.down * 1) * Time.deltaTime);
+                            //lmao will this work
+                            Player1.GetComponent<PlayerCore>().MoveForward(1);
+                            Player2.GetComponent<PlayerCore>().MoveForward(1);
+
                         }
                         break;
                 }
@@ -199,7 +214,6 @@ namespace Gameplay
         {
             if (CheckIfPlayerIsKO(Player1))
             {
-                //Player2
                 this.enabled = false;
             }
             else if (CheckIfPlayerIsKO(Player2))
@@ -207,15 +221,50 @@ namespace Gameplay
                 this.enabled = false;
             }
             else
-            {               
-                Player1.GetComponent<PlayerControls>().attack_choice = AttackTypes.None;
-                Player2.GetComponent<PlayerControls>().attack_choice = AttackTypes.None;
-                timer = fightprep_time;
-                Player1.GetComponent<PlayerControls>().enabled = true;
-                Player2.GetComponent<PlayerControls>().enabled = true;
-            }
-            IsPostFight = false;
+            {
+                if (turn_winner != 0)
+                {
+                    reposition_distance = Math.Abs(Player1.transform.position.z - Player2.transform.position.z);
 
+                    switch (turn_winner)
+                    {
+                        //p1 runs up to p2 (cause p2 he got bonked)
+                        case 1:
+                            if (!(reposition_distance == 2))
+                            {
+                                Player1.GetComponent<PlayerCore>().MoveForward(2);
+                            }
+                            else
+                            {
+                                turn_winner = 0;
+                            }
+                            break;
+
+                        //p2 runs up to p1 (cause p1 got bonked)
+                        case 2:
+                            if (!(reposition_distance == 2))
+                            {
+                                Player1.GetComponent<PlayerCore>().MoveForward(2);
+                            }
+                            else
+                            {
+                                turn_winner = 0;
+                            }
+                            break;
+                    }
+
+                }
+                else
+                {
+                    Player1.GetComponent<PlayerControls>().Attack_choice = AttackTypes.None;
+                    Player2.GetComponent<PlayerControls>().Attack_choice = AttackTypes.None;
+                    timer = fightprep_time;
+                    Player1.GetComponent<PlayerControls>().enabled = true;
+                    Player2.GetComponent<PlayerControls>().enabled = true;
+                    IsPostFight = false;
+                }
+            }     
+            
         }
         private bool CheckIfPlayerIsKO(GameObject player)
         {
