@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class ChiefGameManager : MonoBehaviour
 {
     
-    public BattleManager myBattleManager;
+    //public BattleManager myBattleManager;
 
     //private bool start_game = false;
 
@@ -21,7 +21,7 @@ public class ChiefGameManager : MonoBehaviour
         Debug.Log("Main Menu");
         if (Input.GetKey(KeyCode.KeypadEnter))
         {           
-            myBattleManager.enabled = true;
+            //myBattleManager.enabled = true;
             this.enabled = false;       
         }
     }

@@ -22,7 +22,7 @@ namespace Gameplay
         }
         void Update()
         {
-            gameObject.GetComponent<BoxCollider>().
+            //gameObject.GetComponent<BoxCollider>().
 
         }
 

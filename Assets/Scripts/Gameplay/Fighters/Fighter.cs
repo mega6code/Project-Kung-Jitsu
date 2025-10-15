@@ -9,10 +9,11 @@ namespace Gameplay.Fighters
 
     public class Fighter : MonoBehaviour
     {
-        protected string fighter_name;
-        protected string fighter_subname;
-        public string Fighter_name { get { return Fighter_name; } }
-        public string Fighter_subname { get => fighter_subname; }
+        private string f_name;
+        private string f_title;
+
+        //protected string Name { get => name; set => name = value; }
+        //protected string Title { get => title; set => title = value; }
 
         public virtual void Ability()
         {
@@ -32,18 +33,18 @@ namespace Gameplay.Fighters
         }
     }
 
-    public class GregFighter : Fighter
-    {
-        public override void Ability()
-        {
+    //public class GregFighter : Fighter
+    //{
+    //    public override void Ability()
+    //    {
 
-        }
-        public GregFighter() 
-        {
-            fighter_name = "Greg";
-            fighter_subname = "the Fighter";
-        }
-    }
+    //    }
+    //    public GregFighter() 
+    //    {
+    //        fighter_name = "Greg";
+    //        fighter_title = "the Fighter";
+    //    }
+    //}
 
 
 
