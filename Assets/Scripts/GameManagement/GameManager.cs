@@ -1,11 +1,11 @@
-using Gameplay;
+
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 //add animation core, fix playernum thing (just make it simple now), dont disable playercore only player controls
-public class ChiefGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     
     //public BattleManager myBattleManager;
