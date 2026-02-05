@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3735689164449819359}
+  - component: {fileID: 2601365384940747898}
   - component: {fileID: 2638575626161087071}
+  - component: {fileID: 6180574291576921323}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,6 +35,18 @@ Transform:
   - {fileID: 3374478777184228382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2601365384940747898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3036867527320616348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14a2d9d577dee8438b1b3a98cdf5c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!114 &2638575626161087071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,10 +74,10 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6326039994990229255}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_useGravity
-        m_Mode: 6
+      - m_Target: {fileID: 3036867527320616348}
+        m_TargetAssemblyTypeName: FighterManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -131,6 +145,18 @@ MonoBehaviour:
   m_DefaultActionMap: InBattle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6180574291576921323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3036867527320616348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a44f3f68f2ba445a8c310b7fe26185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FighterManager
 --- !u!1001 &7679033452782207882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,10 +205,5 @@ PrefabInstance:
 --- !u!4 &3374478777184228382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4919591797657032596, guid: 9fe36e44994d08d44b4be01493b1d553, type: 3}
-  m_PrefabInstance: {fileID: 7679033452782207882}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &6326039994990229255 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 4421395631099262093, guid: 9fe36e44994d08d44b4be01493b1d553, type: 3}
   m_PrefabInstance: {fileID: 7679033452782207882}
   m_PrefabAsset: {fileID: 0}

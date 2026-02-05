@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 namespace Fighters
@@ -18,6 +14,7 @@ namespace Fighters
         [SerializeField]
         private AttackTypes attack_choice = AttackTypes.NoAttack;
 
+        private FighterManager f_manager;
         private AttackType current_attack_type = new NoAttack();
         #endregion
 
@@ -27,6 +24,11 @@ namespace Fighters
         #endregion
 
         #region Methods
+        public void SetFighterManager(FighterManager fm)
+        {
+            f_manager = fm;
+            f_manager.ChoseAttack += OnChoseAttack;
+        }
         private void ChangeAttackType()
         {
             switch (this.attack_choice)
@@ -47,13 +49,18 @@ namespace Fighters
         }
         #endregion
 
-        #region Events
-        public void OnChangeAttackChoice(AttackTypes attack_choice)
+        #region Event Methods
+        private void OnChoseAttack(object sender, AttackTypes e)
         {
-            this.attack_choice = attack_choice;
+            this.attack_choice = e;
         }
-
         #endregion
+
+        #region Events
+        #endregion
+
+
+
 
 
 
