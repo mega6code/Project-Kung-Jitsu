@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     #region Fields
     private static GameManager instance;
 
-    [SerializeField] private InputManager input_manager;
+    //[SerializeField] private InputManager inputManager;
     #endregion
 
     #region Properties
@@ -17,12 +17,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Methods
-
-    #endregion
-    #region Events
-
-    #endregion
-    #region Event Functions
     private void Awake()
     {
         if(GameManager.instance == null)
@@ -34,10 +28,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    private void Start()
-    {
     }
     #endregion
 

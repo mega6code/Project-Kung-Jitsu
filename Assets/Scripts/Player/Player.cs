@@ -6,30 +6,29 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     #region Fields
-    #endregion
-
-    #region Methods
-    
-    #endregion
-
-    #region Event Methods
-    public void OnKick(InputAction.CallbackContext cbx)
-    {
-        ChoosingAttack.Invoke(this, AttackTypes.Kick);
-    }
-    public void OnPunch(InputAction.CallbackContext cbx)
-    {
-        ChoosingAttack.Invoke(this, AttackTypes.Punch);
-    }
-    public void OnGrab(InputAction.CallbackContext cbx)
-    {
-        ChoosingAttack.Invoke(this, AttackTypes.Grab);
-    }
+    [SerializeField] private bool IsDefaultPlayer;
+    []
+    [SerializeField] private InputActionAsset inputActions;
     #endregion
 
     #region Events
-    public event EventHandler<AttackTypes> ChoosingAttack;
-
+    public event Action<AttackTypes> ChoosingAttack;
     #endregion
+
+    #region Methods
+    public void OnKick()
+    {
+        ChoosingAttack.Invoke(AttackTypes.Kick);
+    }
+    public void OnPunch()
+    {
+        ChoosingAttack.Invoke(AttackTypes.Punch);
+    }
+    public void OnGrab()
+    {
+        ChoosingAttack.Invoke(AttackTypes.Grab);
+    }
+    #endregion
+
 
 }

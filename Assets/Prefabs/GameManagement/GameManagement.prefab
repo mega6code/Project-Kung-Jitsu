@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8063893798241614087}
   - component: {fileID: 2983073547376125756}
   m_Layer: 6
-  m_Name: PlayerManagent
-  m_TagString: Untagged
+  m_Name: PlayerManagment
+  m_TagString: GameManagement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInputManager
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -57,16 +57,16 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: Join
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 89da78ba-8916-4f23-b55b-a88bdc425e75
+      m_Id: 6a490915-23f3-4fe7-aacd-a8bf3301964e
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 0}
+  m_PlayerPrefab: {fileID: 3036867527320616348, guid: 8deadabdd32f67644b4b3ef89d9bd8be, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -86,7 +86,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8321653286594798817}
   - component: {fileID: 4605146596521778993}
-  - component: {fileID: 1668523984307536138}
   m_Layer: 6
   m_Name: GameManagement
   m_TagString: GameManagement
@@ -122,18 +121,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad7a3cfbe847fc41b8c8ff567adcceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  input_manager: {fileID: 1668523984307536138}
---- !u!114 &1668523984307536138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6843845343911280141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60b550ea56e6c243877a3e8716d0dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  input_action_asset:
-  - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
