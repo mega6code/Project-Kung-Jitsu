@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7364741536428442918}
   - component: {fileID: 6332519676371734937}
   - component: {fileID: 4421395631099262093}
+  - component: {fileID: 603564472760770396}
   - component: {fileID: 2951217263803810246}
   m_Layer: 0
   m_Name: Fighter
@@ -141,8 +142,30 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!95 &603564472760770396
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834442024671458082}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8595e0a7f8893ba46acdf8019eb5a8bf, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2951217263803810246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +182,4 @@ MonoBehaviour:
   f_title: the Fighter
   energy: 0
   attack_choice: 0
+  animator: {fileID: 0}

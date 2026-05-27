@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,42 +10,43 @@ namespace Fighters
     {
 
         #region Fields
-        [SerializeField] private Player player;
-
-        private Fighter fighter;
-        #endregion
-
-        #region Methods
-        private void Awake()
-        {
-            player.ChoosingAttack += OnChoosingAttack;
-        }
-
-        private void LockInFighter()
-        {
-            fighter = gameObject.GetComponentInChildren<Fighter>();
-            fighter.SetFighterManager(this);
-        }
-        #endregion
-
-        #region Event Methods
-        private void OnMatchStart()
-        {
-            LockInFighter();
-        }
-        private void OnBattleStart()
-        {
-
-        }
-        private void OnChoosingAttack(object sender, AttackTypes e)
-        {
-            ChoseAttack.Invoke(this, e);
-        }
+        [SerializeField] public AllFighters allFighters;
+        private Fighter player1;
+        private Fighter player2;
+        private List<Fighter> other_players;
         #endregion
 
         #region Events
-        public event EventHandler<AttackTypes> ChoseAttack;
+        public event Action<AttackTypes> ChoseAttack;
         #endregion
-    }
+        
+        #region Methods
+        /// <summary>
+        /// Instantiate a Fighter prefab
+        /// </summary>
+        /// <param name="fighterName"></param>
+        /// <param name="transform"></param>
+        /// <param name="playerNumber">1 = player1; 2 = player2;</param>
+        public void InstantiateFighter(FighterNames fighterName, Transform transform, int playerNumber = -1)
+        {
+            GameObject fighter = allFighters.listOfAllFighters[fighterName];
+            fighter = Instantiate(fighter, transform);
+            
+            //assigns the Fighter component of the Fighter prefab that was just initialized
+            switch(playerNumber)
+            {
+                case 1:
+                    player1 = fighter.GetComponent<Fighter>();
+                    break;
+                case 2:
+                    player2 = fighter.GetComponent<Fighter>();
+                    break;
+                default:
+                    other_players.Add(fighter.GetComponent<Fighter>());
+                    break;
+            }
+        }
+        #endregion
 
+    }
 }

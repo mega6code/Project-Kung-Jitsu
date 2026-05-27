@@ -1,34 +1,51 @@
+using System;
+using Fighters;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class GameManager : MonoBehaviour
+namespace GameManagement
 {
-
-
-    #region Fields
-    private static GameManager instance;
-
-    //[SerializeField] private InputManager inputManager;
-    #endregion
-
-    #region Properties
-
-    #endregion
-
-    #region Methods
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if(GameManager.instance == null)
+        #region Fields
+
+        private static GameManager instance;
+
+        //[SerializeField] private InputManager inputManager;
+        //[SerializeField] private UIManager uiManager;
+        [SerializeField] private PlayerManager playerManager;
+        [SerializeField] private FighterManager fighterManager;
+
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Methods
+
+        private void Awake()
         {
-            GameManager.instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+
+        /*private void OnEnable()
+    {
+        playerManager.PlayerChoseAttack += Player
+    }*/
+
+        #endregion
+
     }
-    #endregion
 
 }
