@@ -171,11 +171,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter2.0
       objectReference: {fileID: 0}
+    - target: {fileID: 2921958062119108149, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+      propertyPath: animatorParameters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921958062119108149, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+      propertyPath: hitboxSpawnablePoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2078007106880164872, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 394811046}
+    - targetCorrespondingSourceObject: {fileID: 2078007106880164872, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 394811050}
+    - targetCorrespondingSourceObject: {fileID: 2078007106880164872, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 394811049}
   m_SourcePrefab: {fileID: 100100000, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+--- !u!1 &394811045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078007106880164872, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
+  m_PrefabInstance: {fileID: 394811044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &394811046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6016170cc5d2844a5b4320fbd7579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fighters.AttackStateManager
+  states:
+  - key: 0
+    value: {fileID: 0}
+--- !u!114 &394811049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4324e37aa0b7648b72e03ea328e87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fighters.KickState
+--- !u!114 &394811050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e84335c47d46f341a7397f6a84076e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fighters.NoAttackState
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +526,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 813243368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1393418089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393418092}
+  - component: {fileID: 1393418091}
+  - component: {fileID: 1393418090}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1393418090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393418089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.SceneVariables
+--- !u!114 &1393418091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393418089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.Variables
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &1393418092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393418089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3418486415336529782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,3 +861,4 @@ SceneRoots:
   - {fileID: 8080537039406967232}
   - {fileID: 781531143}
   - {fileID: 394811044}
+  - {fileID: 1393418092}

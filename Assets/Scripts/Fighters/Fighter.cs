@@ -12,7 +12,7 @@ namespace Fighters
         [SerializeField] Rigidbody rb;
         [SerializeField] Animator animator;
         [SerializeField] HitboxManager hitboxManager;
-        [SerializeField] AttackStateManager attackStateManager;
+        [SerializeField] FightStateManager fightStateManager;
         [SerializeField] Transform launchPoint;
 
         [Space]
@@ -49,7 +49,7 @@ namespace Fighters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="attackReleasePointName">Like </param>
+        /// <param name="attackReleasePointName">Like "Left Leg", "Right Arm", etc...</param>
         private void OnAttackReleasing(string attackReleasePointName)
         {
             Transform hitboxSpawnPoint = GetHitboxSpawnablePoint(attackReleasePointName);
@@ -86,7 +86,7 @@ namespace Fighters
 
         public void ReceiveHit(HitData hit_data)
         {
-            attackStateManager.ReceiveHit(hit_data);
+            fightStateManager.ReceiveHit(hit_data);
         }
 
         private void ReceiveKnockback(float launch_angle)
@@ -97,25 +97,6 @@ namespace Fighters
 
             float launch_strength = 1;
             rb.AddForce(launch_direction.forward * launch_strength, ForceMode.VelocityChange);
-        }
-
-        public void ChangeAttackType()
-        {
-            switch (this.attack_choice)
-            {
-                case AttackTypes.NoAttack:
-                    this.current_attack_type = new NoAttack();
-                    break;
-                case AttackTypes.Kick:
-                    this.current_attack_type = new Kick();
-                    break;
-                case AttackTypes.Punch:
-                    this.current_attack_type = new Punch();
-                    break;
-                case AttackTypes.Grab:
-                    this.current_attack_type = new Grab();
-                    break;
-            }
         }
 
         /*private void OnCollisionEnter(Collision collision)
