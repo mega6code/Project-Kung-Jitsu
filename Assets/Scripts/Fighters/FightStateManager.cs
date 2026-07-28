@@ -8,8 +8,8 @@ namespace Fighters
 {
     public class FightStateManager: MonoBehaviour
     {
-        private StateManagerUtilities utilities;
-        private Dictionary<AttackTypes, FightState> states;
+        //private StateManagerUtilities utilities;
+        //private Dictionary<AttackTypes, FightState> states;
         private FightState current_state;
         private void Start()
         {
@@ -23,9 +23,15 @@ namespace Fighters
             gotHit
         }
 
+        public void ChangeState()
+        {
+            
+        }
         public void ReceiveHit(HitData hit_data)
         {
             current_state.ReceiveHit(hit_data);
         }
+        
+        
     }
 }

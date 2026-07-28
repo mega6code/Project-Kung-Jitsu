@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Fighters
 {
-    [Serializable]
+    //[Serializable]
     public struct StateManagerUtilities
     {
         public bool ChangeState<K, V>(K key, Dictionary<K, V> states, out V current_state)

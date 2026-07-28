@@ -8,7 +8,6 @@ namespace Fighters
     {
         protected static void CheckAttackTypeReceived(FightState fightState, HitData hitData)
         {
-
             switch (hitData.attack_type)
             {
                 case AttackTypes.Kick:

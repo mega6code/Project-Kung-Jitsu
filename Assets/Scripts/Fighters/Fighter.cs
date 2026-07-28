@@ -8,12 +8,14 @@ namespace Fighters
     {
         #region Fields
         [Header("References")]
-        //References
-        [SerializeField] Rigidbody rb;
-        [SerializeField] Animator animator;
-        [SerializeField] HitboxManager hitboxManager;
-        [SerializeField] FightStateManager fightStateManager;
-        [SerializeField] Transform launchPoint;
+        //Serialized References
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private Animator animator;
+        [SerializeField] private HitboxManager hitboxManager;
+        [SerializeField] private Transform launchPoint;
+        [SerializeField] private FightStateManager fightStateManager;
+        [SerializeField] private FightStyleManager fightStyleManager;
+        [SerializeField] private EnergyManager energyManager; 
 
         [Space]
 
@@ -21,10 +23,12 @@ namespace Fighters
         //Serialzed Fields
         [SerializeField] private string f_name;
         [SerializeField] private string f_title;
-        [SerializeField] private int energy;
         [SerializeField] private AttackTypes attack_choice = AttackTypes.NoAttack;
         [SerializeField] private Dictionary<AttackTypes, string> animatorParameters;
         [SerializeField] private Dictionary<string, Transform> hitboxSpawnablePoints;
+        
+        //Other Fields
+        ////private FighterState current_state; //if need it for the fighter compnonet
         #endregion     
 
         #region Events
