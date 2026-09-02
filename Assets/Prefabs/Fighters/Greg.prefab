@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a7e15e3273731ca49aba99cddbbe6f0b, type: 2}
     - target: {fileID: 1701587533573656242, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.71428
       objectReference: {fileID: 0}
     - target: {fileID: 1701587533573656242, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.276
       objectReference: {fileID: 0}
     - target: {fileID: 1701587533573656242, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.158
       objectReference: {fileID: 0}
     - target: {fileID: 1701587533573656242, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,10 +54,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2078007106880164872, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
       propertyPath: m_Name
-      value: Greg
-      objectReference: {fileID: 0}
-    - target: {fileID: 2921958062119108149, guid: 53aced59d51573c4c9e9d80d0f2846a1, type: 3}
-      propertyPath: f_name
       value: Greg
       objectReference: {fileID: 0}
     m_RemovedComponents: []

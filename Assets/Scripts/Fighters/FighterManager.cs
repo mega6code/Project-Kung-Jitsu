@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Fighters
+namespace KungJitsu.Fighters
 {
     public class FighterManager : MonoBehaviour
     {
 
         #region Fields
-        [SerializeField] public AllFighters allFighters;
+        [SerializeField] public FighterDatabase fighterDatabase;
         private Fighter player1;
         private Fighter player2;
         private List<Fighter> other_players;
@@ -29,7 +29,8 @@ namespace Fighters
         /// <param name="playerNumber">1 = player1; 2 = player2;</param>
         public void InstantiateFighter(FighterNames fighterName, Transform transform, int playerNumber = -1)
         {
-            GameObject fighter = allFighters.listOfAllFighters[fighterName];
+            //int fighterID = int(fighterName);
+            GameObject fighter = fighterDatabase.listOfAllFighters[0];
             fighter = Instantiate(fighter, transform);
             
             //assigns the Fighter component of the Fighter prefab that was just initialized

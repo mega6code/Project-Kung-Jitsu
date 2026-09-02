@@ -1,4 +1,4 @@
-﻿namespace Fighters
+﻿namespace KungJitsu.Fighters
 {
     public struct HitData
     {

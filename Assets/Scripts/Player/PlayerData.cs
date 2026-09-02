@@ -1,15 +1,16 @@
-using Fighters;
+using KungJitsu.Fighters;
+using UnityEngine.InputSystem;
 
-namespace Player
+namespace KungJitsu.Players
 {
     public struct PlayerData
     {
-        public Player player;
+        public PlayerInput playerInput;
         public AttackTypes attack_type;
-
-        public PlayerData(Player player, AttackTypes attackType)
+        
+        public PlayerData(AttackTypes attackType, PlayerInput playerInput = null)
         {
-            this.player = player;
+            this.playerInput = playerInput;
             this.attack_type = attackType;
         }
     }

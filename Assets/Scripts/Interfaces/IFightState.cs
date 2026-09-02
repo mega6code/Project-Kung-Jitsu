@@ -1,5 +1,5 @@
 ﻿using System;
-using Fighters;
+using KungJitsu.Fighters;
 using static UnityEngine.Analytics.IAnalytic;
 
 namespace KungJitsu.Interfaces
