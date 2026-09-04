@@ -11,6 +11,7 @@ namespace KungJitsu.Fighters
 
             #region Serialized References
             [SerializeField] private Transform launchPoint;
+            [SerializeField] private Transform groundPoint;
             [SerializeField] private Rigidbody rb;
             [SerializeField] private Animator animator;
             [SerializeField] private HitboxManager hitboxManager;
@@ -33,6 +34,8 @@ namespace KungJitsu.Fighters
             //Other Fields
             ////private FighterState current_state; //if need it for the fighter compnonet
             #endregion
+            
+            private bool kknocked = false;
 
         #endregion     
 
@@ -59,6 +62,26 @@ namespace KungJitsu.Fighters
                 fightStateManager.stateGotHit -= OnFightStateGotHit;
                 fightStateManager.stateBlocked -= OnFightStateBlocked;
                 fightStateManager.stateDrawed -= OnFightStateDrawed;
+            }
+
+            private void Update()
+            {
+                if (kknocked)
+                {
+                    Debug.Log($"{this.name}'s k'knocked!");
+                    
+                    if (Physics.Raycast(groundPoint.position, (rb.transform.up * -1), out RaycastHit hit))
+                    {
+                        Debug.Log($"{this.name}'s raycast hit {hit.transform.name}: {hit.distance} units away at {rb.linearVelocity.magnitude} speed");
+                        
+                        if (rb.linearVelocity.magnitude < 1.0f && hit.distance < 0.5f)
+                        {
+                            Debug.Log($"{this.name} has landed!");
+                            kknocked = false;
+                            animator.SetBool("InKKnocked", false);
+                        }
+                    }
+                }
             }
 
             /// <summary>
@@ -185,14 +208,15 @@ namespace KungJitsu.Fighters
 
             private void ReceiveKnockback(float launch_angle)
             {
-                launch_angle = -(45/*Math.Clamp(launch_angle, 1, 89)*/);
+                launch_angle = -(75/*Math.Clamp(launch_angle, 1, 89)*/);
                 launchPoint.Rotate(new Vector3(launch_angle, 0, 0));
 
-                float launch_strength = 5;
+                float launch_strength = 8;
                 rb.AddForce(launchPoint.forward * launch_strength, ForceMode.VelocityChange);
-                
                 launchPoint.Rotate(new Vector3(-launch_angle, 0, 0));
-                animator.SetTrigger("InKKnocked");
+                
+                kknocked = true;
+                animator.SetBool("InKKnocked", true);
             }
             #endregion
         #endregion

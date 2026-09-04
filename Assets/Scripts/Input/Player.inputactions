@@ -47,10 +47,10 @@
                 {
                     "name": "",
                     "id": "4981cf1c-4eb4-46e6-af37-968cb713bb62",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardP1",
+                    "groups": "KeyboardP1;Gamepad",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -113,10 +113,10 @@
                 {
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardP1",
+                    "groups": "KeyboardP1;Gamepad",
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -146,7 +146,7 @@
                 {
                     "name": "",
                     "id": "c7d1bbec-9119-47c6-995f-dc64e51a730a",
-                    "path": "<Keyboard>/backquote",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardP1",
@@ -168,7 +168,7 @@
                 {
                     "name": "",
                     "id": "a8dfadd2-0a82-42bd-800d-9a718a60449e",
-                    "path": "<Keyboard>/minus",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardP2",

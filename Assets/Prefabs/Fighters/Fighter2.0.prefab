@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 2921958062119108149}
   - component: {fileID: 7079093339990445732}
   - component: {fileID: 2238292118740800822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fighter2.0
   m_TagString: Fighter
   m_Icon: {fileID: 0}
@@ -547,6 +547,7 @@ Transform:
   - {fileID: 4420827680286851628}
   - {fileID: 6774022685729229902}
   - {fileID: 7743361053404896669}
+  - {fileID: 5482570320557519015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4719046784047502536
@@ -611,7 +612,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -634,12 +635,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fighters.Fighter
   launchPoint: {fileID: 7743361053404896669}
+  groundPoint: {fileID: 5482570320557519015}
   rb: {fileID: 5862456121030431948}
   animator: {fileID: 4719046784047502536}
   hitboxManager: {fileID: 7079093339990445732}
   fightStateManager: {fileID: 2238292118740800822}
   energyManager: {fileID: 0}
-  f_name: Greg
+  f_name: Fighter
   f_title: the Fighter
   attack_choice: 0
 --- !u!114 &7079093339990445732
@@ -1732,6 +1734,37 @@ Transform:
   m_Children:
   - {fileID: 7721664731681018272}
   m_Father: {fileID: 6094318581700765255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4785363467928775313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5482570320557519015}
+  m_Layer: 0
+  m_Name: FeetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5482570320557519015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785363467928775313}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.297, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1701587533573656242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4812167018216182772
 GameObject:
