@@ -3,6 +3,7 @@ using KungJitsu.Fighters;
 using KungJitsu.Players;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 
 namespace GameManagement
@@ -21,6 +22,7 @@ namespace GameManagement
         //testingggggg
         [SerializeField] private Fighter fighter1;
         [SerializeField] private Fighter fighter2;
+        [SerializeField] private Camera battleCamera;
 
         #endregion
 
@@ -46,17 +48,53 @@ namespace GameManagement
         private void OnEnable()
         {
             playerManager.P1ChoseAttack += OnP1ChoseAttack;
-            playerManager.P1GoBack += P1GoBack;
+            playerManager.P1GoBack += OnP1GoBack;
             playerManager.P2ChoseAttack += OnP2ChoseAttack;
-            playerManager.P2GoBack += P2GoBack;
+            playerManager.P2GoBack += OnP2GoBack;
+            
+            fighter1.gotKKnocked += OnGotKKnocked;
+            fighter1.landed += OnLanded;
+            fighter2.gotKKnocked += OnGotKKnocked;
+            fighter2.landed += OnLanded;
         }
 
-        private void P1GoBack()
+        private void OnDisable()
+        {
+            playerManager.P1ChoseAttack -= OnP1ChoseAttack;
+            playerManager.P1GoBack -= OnP1GoBack;
+            playerManager.P2ChoseAttack -= OnP2ChoseAttack;
+            playerManager.P2GoBack -= OnP2GoBack;
+            
+            fighter1.gotKKnocked -= OnGotKKnocked;
+            fighter1.landed -= OnLanded;
+            fighter2.gotKKnocked -= OnGotKKnocked;
+            fighter2.landed -= OnLanded;
+        }
+
+        private void OnGotKKnocked(Camera fighterCamera)
+        {
+            battleCamera.enabled = false;
+            fighterCamera.enabled = true;
+        }
+        
+        private void OnLanded(Camera fighterCamera, Transform fighterSpace)
+        {
+            battleCamera.transform.position = new Vector3(battleCamera.transform.position.x, 
+                battleCamera.transform.position.y, 
+                fighterSpace.transform.position.z);
+            Debug.Log($"{this.name}: {battleCamera.transform.position.x}, {battleCamera.transform.position.y}, {fighterSpace.transform.position.z}");
+            //mainCamera.gameObject.transform.
+            battleCamera.enabled = true;
+            
+            fighterCamera.enabled = false;
+        }
+
+        private void OnP1GoBack()
         {
             fighter1.ChangeAttackChoice(AttackTypes.NoAttack);
         }
 
-        private void P2GoBack()
+        private void OnP2GoBack()
         {
             fighter2.ChangeAttackChoice(AttackTypes.NoAttack);
         }

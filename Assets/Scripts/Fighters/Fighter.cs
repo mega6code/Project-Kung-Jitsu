@@ -12,8 +12,10 @@ namespace KungJitsu.Fighters
             #region Serialized References
             [SerializeField] private Transform launchPoint;
             [SerializeField] private Transform groundPoint;
+            [SerializeField] private Transform fighterSpace;
             [SerializeField] private Rigidbody rb;
             [SerializeField] private Animator animator;
+            [SerializeField] private Camera fighterCamera;
             [SerializeField] private HitboxManager hitboxManager;
             [SerializeField] private FightStateManager fightStateManager;
             [SerializeField] private EnergyManager energyManager; 
@@ -29,17 +31,26 @@ namespace KungJitsu.Fighters
             [SerializeField] private string f_title;
             [SerializeField] private AttackTypes attack_choice = AttackTypes.NoAttack;
 
-            ////[SerializeField] private Dictionary<AttackTypes, string> animatorParameters;
-            ////[SerializeField] private Dictionary<string, Transform> hitboxSpawnablePoints;
-            //Other Fields
-            ////private FighterState current_state; //if need it for the fighter compnonet
-            #endregion
-            
-            private bool kknocked = false;
 
-        #endregion     
+            ////[SerializeField] private Dictionary<AttackTypes, string> animatorParameters;
+
+            ////[SerializeField] private Dictionary<string, Transform> hitboxSpawnablePoints;
+
+            //Other Fields
+
+            ////private FighterState current_state; //if need it for the fighter compnonet
+
+            #endregion
+
+            private bool kknocked = false;
+            private bool airborne = false;
+
+            #endregion     
 
         #region Events
+
+        public event Action<Camera> gotKKnocked;
+        public event Action<Camera, Transform> landed;
         #endregion
 
         #region Properties
@@ -74,11 +85,27 @@ namespace KungJitsu.Fighters
                     {
                         Debug.Log($"{this.name}'s raycast hit {hit.transform.name}: {hit.distance} units away at {rb.linearVelocity.magnitude} speed");
                         
-                        if (rb.linearVelocity.magnitude < 1.0f && hit.distance < 0.5f)
+                        if (hit.distance > 0.5f)
                         {
-                            Debug.Log($"{this.name} has landed!");
+                            airborne = true;
+                            Debug.Log($"{this.name} is in air! airborne var is {airborne}");
+                        }
+                    }
+                }
+
+                if (airborne)
+                {
+                    if (Physics.Raycast(groundPoint.position, (rb.transform.up * -1), out RaycastHit hit))
+                    {
+                        Debug.Log($"{this.name}'s raycast hit {hit.transform.name}: {hit.distance} units away at {rb.linearVelocity.magnitude} speed");
+                        
+                        if (hit.distance < 0.5f)
+                        {
+                            airborne = false;
                             kknocked = false;
                             animator.SetBool("InKKnocked", false);
+                            landed.Invoke(fighterCamera, fighterSpace);
+                            Debug.Log($"{this.name} has landed!");
                         }
                     }
                 }
@@ -114,6 +141,7 @@ namespace KungJitsu.Fighters
             {
                 animator.SetTrigger("IsHit");
                 ReceiveKnockback(hitData.launch_angle);
+                animator.ResetTrigger(GetTriggerforAttackAnimation());
             }
 
 	        private void OnFightStateDrawed(HitData hitData)
@@ -217,9 +245,11 @@ namespace KungJitsu.Fighters
                 
                 kknocked = true;
                 animator.SetBool("InKKnocked", true);
+                gotKKnocked.Invoke(fighterCamera);
             }
             #endregion
         #endregion
 
+        
     }
 }
